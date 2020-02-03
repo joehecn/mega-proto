@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package bigimport;
+
+service Greeter {
+  rpc UpdateDatasource (UDatasourceRequest) returns (UDatasourceReply) {}
+  rpc FindBySns (MfileRequest) returns (MfileReply) {}
+  rpc UpsertFile (UFileRequest) returns (UFileReply) {}
+  rpc UpdateDatasourcevalue (UDVRequest) returns (UDVReply) {}
+  rpc UpdateValue (UValueRequest) returns (UValueReply) {}
+}
+
+// UpdateDatasource
+message UDatasourceRequest {
+  string db = 1;
+  bool computeProcess = 2;
+  string cron = 3;
+  string name = 4;
+  string unit = 5;
+  string createdBy = 6;
+}
+// devicePoint: [],
+// computeProcess: true,
+// cron: 'api',
+// _id: 5e27638f480a63537ddc8917,
+// name: 'VND26_kWh',
+// createdBy: 5cb9a68d4e01892bfe5ab855,
+// unit: 'kWh'
+message Data0 {
+  string _id = 1;
+}
+message UDatasourceReply {
+  string code = 1;
+  string message = 2;
+  optional Data0 data = 3;
+}
+
+// FindBySns
+message MfileRequest {
+  string db = 1;
+  repeated int32 sns = 2;
+}
+// {
+//   relativePath: 'BURActiveEnergy-20140714-0200.csv',
+//   sn: 1,
+//   mtime: 'Mon Jul 14 2014 02:00:02 GMT+0800 (GMT+08:00)'
+// }
+message Data1List {
+  string relativePath = 1;
+  int32 sn = 2;
+  string mtime = 3;
+}
+message Data1 {
+  repeated Data1List list = 1;
+}
+message MfileReply {
+  string code = 1;
+  string message = 2;
+  optional Data1 data = 3;
+}
+
+// UpsertFile
+message UFileRequest {
+  string db = 1;
+  int32 sn = 2;
+  string relativePath = 3;
+  string mtime = 4;
+}
+message Data2 {
+  string _id = 1;
+  string relativePath = 2;
+  int32 sn = 3;
+  string mtime = 4;
+}
+message UFileReply {
+  string code = 1;
+  string message = 2;
+  optional Data2 data = 3;
+}
+
+// UpdateDatasourcevalue
+message UDVRequest {
+  string db = 1;
+  string name = 2;
+  string time = 3;
+  float original = 4;
+  // oneof value {
+  //   float value = 5;
+  // }
+  bool upsert = 6;
+}
+message Data3 {
+  // string _id = 1;
+  float original = 4;
+}
+message UDVReply {
+  string code = 1;
+  string message = 2;
+  optional Data3 data = 3;
+}
+
+// UpdateValue
+message UValueRequest {
+  string db = 1;
+  string name = 2;
+  string time = 3;
+}
+message Data4 {
+  bool isOk = 1;
+}
+message UValueReply {
+  string code = 1;
+  string message = 2;
+  optional Data4 data = 3;
+}
