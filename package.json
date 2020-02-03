@@ -1,6 +1,6 @@
 {
   "name": "mega-proto",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "mega grpc proto",
   "main": "src/index.js",
   "repository": {
@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.5.3",
-    "grpc": "^1.24.2"
+    "grpc": "^1.24.2",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
