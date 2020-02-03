@@ -4,15 +4,24 @@ const grpc = require('grpc')
 const bigimportProto = require('./bigimportProto.js')
 
 /**
+ * 全局单例
+ */
+let _client = null
+
+/**
  *
  * @param {string} connStr: '127.0.0.1:50051', 'bigproject-import:50051'
  * @param {string} db: '5e1c390fa625ed00194043ae'
  */
 const getClient = (connStr, db) => {
-  const client = new bigimportProto.Greeter(
-    connStr,
-    grpc.credentials.createInsecure()
-  )
+  if (!_client) {
+    _client = new bigimportProto.Greeter(
+      connStr,
+      grpc.credentials.createInsecure()
+    )
+  }
+
+  const client = _client
 
   const updateDatasource = async ({ computeProcess, cron, name, unit, createdBy }) => {
     return new Promise((resolve, reject) => {
