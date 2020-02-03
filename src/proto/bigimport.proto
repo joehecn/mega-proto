@@ -90,8 +90,7 @@ message UDVRequest {
   bool upsert = 6;
 }
 message Data3 {
-  // string _id = 1;
-  float original = 4;
+  float original = 1;
 }
 message UDVReply {
   string code = 1;
