@@ -168,7 +168,8 @@ const getClient = (connStr, db) => {
           return
         }
 
-        resolve(data)
+        const jsonData = JSON.parse(data)
+        resolve(jsonData)
       })
     })
   }
@@ -190,7 +191,8 @@ const getClient = (connStr, db) => {
           return
         }
 
-        resolve(data)
+        const jsonData = JSON.parse(data)
+        resolve(jsonData)
       })
     })
   }
@@ -212,7 +214,8 @@ const getClient = (connStr, db) => {
           return
         }
 
-        resolve(data)
+        const jsonData = JSON.parse(data)
+        resolve(jsonData)
       })
     })
   }
@@ -234,7 +237,8 @@ const getClient = (connStr, db) => {
           return
         }
 
-        resolve(data)
+        const jsonData = JSON.parse(data)
+        resolve(jsonData)
       })
     })
   }
