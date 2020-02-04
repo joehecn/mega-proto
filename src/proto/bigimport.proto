@@ -122,5 +122,5 @@ message JSONRequest {
 message JSONReply {
   string code = 1;
   string message = 2;
-  optional string json = 3;
+  optional string data = 3;
 }
