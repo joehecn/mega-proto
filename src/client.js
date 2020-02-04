@@ -153,7 +153,7 @@ const getClient = (connStr, db) => {
 
   const list = async arg => {
     return new Promise((resolve, reject) => {
-      const json = JSON.stringify(arg)
+      const json = JSON.stringify({ db, arg })
       client.list({ arg: json }, (err, response) => {
         if (err) {
           reject(err)
@@ -176,7 +176,7 @@ const getClient = (connStr, db) => {
 
   const add = async arg => {
     return new Promise((resolve, reject) => {
-      const json = JSON.stringify(arg)
+      const json = JSON.stringify({ db, arg })
       client.add({ arg: json }, (err, response) => {
         if (err) {
           reject(err)
@@ -199,7 +199,7 @@ const getClient = (connStr, db) => {
 
   const update = async arg => {
     return new Promise((resolve, reject) => {
-      const json = JSON.stringify(arg)
+      const json = JSON.stringify({ db, arg })
       client.update({ arg: json }, (err, response) => {
         if (err) {
           reject(err)
@@ -222,7 +222,7 @@ const getClient = (connStr, db) => {
 
   const remove = async arg => {
     return new Promise((resolve, reject) => {
-      const json = JSON.stringify(arg)
+      const json = JSON.stringify({ db, arg })
       client.remove({ arg: json }, (err, response) => {
         if (err) {
           reject(err)

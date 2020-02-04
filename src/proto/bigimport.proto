@@ -116,7 +116,7 @@ message UValueReply {
 }
 
 message JSONRequest {
-  optional string arg = 1;
+  string arg = 1;
 }
 
 message JSONReply {
