@@ -151,12 +151,105 @@ const getClient = (connStr, db) => {
     })
   }
 
+  const list = async arg => {
+    return new Promise((resolve, reject) => {
+      const json = JSON.stringify(arg)
+      client.list(json, (err, response) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        const { code, message, data } = response
+        if (response.code !== '0') {
+          const error = new Error(message)
+          error.code = code
+          reject(error)
+          return
+        }
+
+        resolve(data)
+      })
+    })
+  }
+
+  const add = async arg => {
+    return new Promise((resolve, reject) => {
+      const json = JSON.stringify(arg)
+      client.add(json, (err, response) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        const { code, message, data } = response
+        if (response.code !== '0') {
+          const error = new Error(message)
+          error.code = code
+          reject(error)
+          return
+        }
+
+        resolve(data)
+      })
+    })
+  }
+
+  const update = async arg => {
+    return new Promise((resolve, reject) => {
+      const json = JSON.stringify(arg)
+      client.update(json, (err, response) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        const { code, message, data } = response
+        if (response.code !== '0') {
+          const error = new Error(message)
+          error.code = code
+          reject(error)
+          return
+        }
+
+        resolve(data)
+      })
+    })
+  }
+
+  const remove = async arg => {
+    return new Promise((resolve, reject) => {
+      const json = JSON.stringify(arg)
+      client.remove(json, (err, response) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        const { code, message, data } = response
+        if (response.code !== '0') {
+          const error = new Error(message)
+          error.code = code
+          reject(error)
+          return
+        }
+
+        resolve(data)
+      })
+    })
+  }
+
   return {
     updateDatasource,
     findBySns,
     upsertFile,
     updateDatasourcevalue,
-    updateValue
+    updateValue,
+    // dbconfig
+    list,
+    add,
+    update,
+    remove
   }
 }
 

@@ -8,6 +8,11 @@ service Greeter {
   rpc UpsertFile (UFileRequest) returns (UFileReply) {}
   rpc UpdateDatasourcevalue (UDVRequest) returns (UDVReply) {}
   rpc UpdateValue (UValueRequest) returns (UValueReply) {}
+
+  rpc list (JSONRequest) returns (JSONReply) {}
+  rpc add (JSONRequest) returns (JSONReply) {}
+  rpc update (JSONRequest) returns (JSONReply) {}
+  rpc remove (JSONRequest) returns (JSONReply) {}
 }
 
 // UpdateDatasource
@@ -108,4 +113,14 @@ message UValueReply {
   string code = 1;
   string message = 2;
   optional Data4 data = 3;
+}
+
+message JSONRequest {
+  optional string arg = 1;
+}
+
+message JSONReply {
+  string code = 1;
+  string message = 2;
+  optional string json = 3;
 }
