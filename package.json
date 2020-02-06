@@ -1,6 +1,6 @@
 {
   "name": "mega-proto",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "mega grpc proto",
   "main": "src/index.js",
   "repository": {

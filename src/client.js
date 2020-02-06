@@ -153,7 +153,7 @@ const getClient = (connStr, db) => {
 
   const findTables = async arg => {
     return new Promise((resolve, reject) => {
-      const json = JSON.stringify({ arg })
+      const json = JSON.stringify(arg)
       client.findTables({ arg: json }, (err, response) => {
         if (err) {
           reject(err)
@@ -176,7 +176,7 @@ const getClient = (connStr, db) => {
 
   const findHeaders = async arg => {
     return new Promise((resolve, reject) => {
-      const json = JSON.stringify({ arg })
+      const json = JSON.stringify(arg)
       client.findHeaders({ arg: json }, (err, response) => {
         if (err) {
           reject(err)
