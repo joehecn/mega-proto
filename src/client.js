@@ -151,6 +151,52 @@ const getClient = (connStr, db) => {
     })
   }
 
+  const findTables = async arg => {
+    return new Promise((resolve, reject) => {
+      const json = JSON.stringify({ arg })
+      client.findTables({ arg: json }, (err, response) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        const { code, message, data } = response
+        if (response.code !== '0') {
+          const error = new Error(message)
+          error.code = code
+          reject(error)
+          return
+        }
+
+        const jsonData = JSON.parse(data)
+        resolve(jsonData)
+      })
+    })
+  }
+
+  const findHeaders = async arg => {
+    return new Promise((resolve, reject) => {
+      const json = JSON.stringify({ arg })
+      client.findHeaders({ arg: json }, (err, response) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        const { code, message, data } = response
+        if (response.code !== '0') {
+          const error = new Error(message)
+          error.code = code
+          reject(error)
+          return
+        }
+
+        const jsonData = JSON.parse(data)
+        resolve(jsonData)
+      })
+    })
+  }
+
   const list = async arg => {
     return new Promise((resolve, reject) => {
       const json = JSON.stringify({ db, arg })
@@ -250,6 +296,8 @@ const getClient = (connStr, db) => {
     updateDatasourcevalue,
     updateValue,
     // dbconfig
+    findTables,
+    findHeaders,
     list,
     add,
     update,

@@ -9,6 +9,8 @@ service Greeter {
   rpc UpdateDatasourcevalue (UDVRequest) returns (UDVReply) {}
   rpc UpdateValue (UValueRequest) returns (UValueReply) {}
 
+  rpc findTables (JSONRequest) returns (JSONReply) {}
+  rpc findHeaders (JSONRequest) returns (JSONReply) {}
   rpc list (JSONRequest) returns (JSONReply) {}
   rpc add (JSONRequest) returns (JSONReply) {}
   rpc update (JSONRequest) returns (JSONReply) {}
