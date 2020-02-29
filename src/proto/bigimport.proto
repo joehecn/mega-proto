@@ -91,7 +91,8 @@ message UDVRequest {
   string name = 2;
   string time = 3;
   float original = 4;
-  bool upsert = 5;
+  int32 errorType = 5;
+  bool upsert = 6;
 }
 message Data3 {
   float original = 1;

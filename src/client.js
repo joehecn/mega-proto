@@ -98,13 +98,15 @@ const getClient = (connStr, db) => {
     })
   }
 
-  const updateDatasourcevalue = async ({ name, time, original, upsert }) => {
+  const updateDatasourcevalue = async ({ name, time, original, errorType: _errorType, upsert }) => {
+    const errorType = _errorType || 0
     return new Promise((resolve, reject) => {
       client.updateDatasourcevalue({
         db,
         name,
         time: moment(time).toDate(),
         original,
+        errorType,
         // value: null,
         upsert
       }, (err, response) => {

@@ -35,6 +35,7 @@ const main = async () => {
     name: 'F3_Normal_kWh',
     time: new Date('2013-06-30T16:00:00.000Z'),
     original: 347810,
+    errorType: 0,
     // value: null,
     upsert: true
   })
